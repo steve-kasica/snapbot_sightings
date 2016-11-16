@@ -1,7 +1,8 @@
 # Snapbot (Spectacles) Notifications
 Receive an email notification about Snapbot (Spectacles) when:
+
 1. A new countdown begins, includes the date and time when the location will be revealed.
-1. The Snapbot location has been revealed, includes the approximate address of the location in the email.
+2. The Snapbot location has been revealed, includes the approximate address of the location in the email.
 
 ## Permissions
 This script requires access to:
