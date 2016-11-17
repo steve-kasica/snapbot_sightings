@@ -70,10 +70,10 @@ function main() {
   } else if (curr < prev && curr === 0) {
     // If countdown has concluded.
     
-    var lat = data.coordinates[0],
-        long = data.coordiantes[1];
+    var lat = data.coordinates[0].lat,
+        lng = data.coordinates[0].lng;
         
-    location_email_(lat, long);
+    location_email_(lat, lng);
   }
   
   PropertiesService.getScriptProperties().setProperty('countdown', curr);
