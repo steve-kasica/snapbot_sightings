@@ -67,7 +67,7 @@ function main() {
     
     countdown_email_(dropTime.toString(), hoursDelta.toString(), minutesDelta.toString());
     
-  } else if (curr === 0 && loc.length > 0) {
+  } else if (curr < prev && curr === 0) {
     // If countdown has concluded.
     
     var lat = data.coordinates[0],
