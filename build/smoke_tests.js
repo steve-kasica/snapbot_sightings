@@ -1,4 +1,4 @@
-// These are nothing better than smoke tests, smoke tests
+// These are nothing better than smoke tests, smoke tests.
 
 function sendLocationEmail() {
     var email = PropertiesService.getUserProperties().getProperty('email'),
@@ -7,4 +7,10 @@ function sendLocationEmail() {
         longitude = -112.136893;
     
     email.send_location(latitude, longitude, recipients);
+}
+
+function testAddRow() {
+    var testID = PropertiesService.getScriptProperties().getProperty('testid');
+        fusion_table.table_id = testID;
+    fusion_table.add_row(TEST_LAT, TEST_LNG);
 }
