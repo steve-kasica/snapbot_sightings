@@ -12,11 +12,10 @@
   *     testRecipients {Array} An array of recipients for testing this function.
   *
   * Returns:
-  *     null
+  *     void
   */
-email.send_location = function(latitude, longitude, testRecipients) {
-    var loc = Maps.newGeocoder().reverseGeocode(latitude, longitude),
-        address = loc.results[0].formatted_address,
+email.send_location = function(lat, lng, testRecipients) {
+    var address = maps.get_address_by_lat_lng(lat, lng),
         recipients = testRecipients || form.get_location_subscribers();
 
     recipients.forEach(function(emailAddr) {  
@@ -24,9 +23,9 @@ email.send_location = function(latitude, longitude, testRecipients) {
             subject = 'New Snapbot at ' + address,
             body = 'A new Snapbot selling Spectacles has appeared at ' + address + '. See more at https:spectacles.com/map';
 
-         MailApp.sendEmail(emailAddr, replyTo, subject, body);
+        MailApp.sendEmail(emailAddr, replyTo, subject, body);
     });
- };
+};
 
  /**
   * send_countdown

@@ -14,8 +14,9 @@ var form = form || {};
  *   selected the specific checkbox.
  */
 form.get_subscribers_by_checkbox = function(checkboxText) {
-    return FormApp
-    .getActiveForm()
+  var formId = '1B0BW_ZIL7S1bM28xvX25TyYKQ7rJfYToPeTJupm3Lh4';
+  return FormApp
+    .openById(formId)
     .getResponses()
     .filter(function(formResponse) {
         var checkboxResponse = formResponse.getItemResponses()[0].getResponse();
@@ -35,7 +36,7 @@ form.get_subscribers_by_checkbox = function(checkboxText) {
  *     {Array} an of email address of those who want countdown notifications.
  */
 form.get_countdown_subscribers = function() {
-    var countdownText = 'The date and time of the next a Snapbot deployment when countdown begins.';
+    var countdownText = 'The date and time of the next Snapbot deployment when countdown begins.';
     return this.get_subscribers_by_checkbox(countdownText);
 };
 
