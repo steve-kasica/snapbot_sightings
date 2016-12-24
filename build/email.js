@@ -15,15 +15,22 @@
   *     void
   */
 email.send_location = function(lat, lng, testRecipients) {
-    var address = maps.get_address_by_lat_lng(lat, lng),
-        recipients = testRecipients || form.get_location_subscribers();
-
-    recipients.forEach(function(emailAddr) {  
-        var replyTo = 'Spectacles Location',
-            subject = 'New Snapbot at ' + address,
-            body = 'A new Snapbot selling Spectacles has appeared at ' + address + '. See more at https:spectacles.com/map';
-
-        MailApp.sendEmail(emailAddr, replyTo, subject, body);
+    var address = maps.get_address_by_lat_lng(lat, lng);
+    var recipients = testRecipients || form.get_location_subscribers();
+    var map = maps.get_static_map(lat, lng);
+    var replyTo = 'Spectacles Location';
+    var subject = 'New Snapbot at ' + address;
+    var body = '<p>A new Snapbot selling Spectacles has appeared at ' + address + '. See more at https:spectacles.com/map</p><img src="cid:googleMap">';
+    
+    recipients.forEach(function(emailAddr) { 
+        MailApp.sendEmail({
+            to: emailAddr,
+            subject: subject,
+            htmlBody: body,
+            inlineImages: {
+                googleMap: map.getBlob(),
+            }
+        });
     });
 };
 

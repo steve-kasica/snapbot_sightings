@@ -62,9 +62,16 @@ tests.get_location_subscribers = function() {
   Logger.log(msg, seemsRight, subscribers.join(', '));
 };
 
+tests.test_map_in_email = function() {
+    var latitude = 40.707421;
+    var longitude = -111.461322;
+    var map = maps.get_static_map(latitude, longitude);
+}
+
 function run_tests() {  
   for (var test in tests) {
     if (typeof(tests[test]) == 'function')
       tests[test]();
   }
 }
+
