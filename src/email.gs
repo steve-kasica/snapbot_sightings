@@ -16,7 +16,7 @@
   */
 email.send_location = function(lat, lng, testRecipients) {
     var address = maps.get_address_by_lat_lng(lat, lng);
-    var recipients = testRecipients || form.get_location_subscribers();
+    var recipients = testRecipients || get_location_subscribers(false);
     var map = maps.get_static_map(lat, lng);
     var replyTo = 'Spectacles Location';
     var subject = 'New Snapbot at ' + address;
@@ -48,7 +48,7 @@ email.send_location = function(lat, lng, testRecipients) {
   *     null 
   */
 email.send_countdown = function(drop, hours, min) {
-    var recipients = form.get_location_subscribers(),
+    var recipients = get_location_subscribers(false),
         replyTo = 'Spectacles Countdown',
         body = '',
         subject = 'Snapbot Drops on ' + drop;
