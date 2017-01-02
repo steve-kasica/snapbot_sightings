@@ -34,6 +34,7 @@ function check_for_snapbots() {
           });
         } else {
           throw new Error( "Countdown concluded, but location data wasn't avaliable.");
+            props.setProperty('countdown', prev);
         }
     }
 }
